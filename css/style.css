@@ -221,9 +221,7 @@ hr.small.dark {
     padding: 150px 0;
     background-color: #eee;
 }
-.about .container {
-    width: 70%;
-}
+
 .about h2 { margin-bottom: 40px; }
 
 /* Funny Box */
@@ -266,7 +264,7 @@ hr.small.dark {
     text-align: center;
 }
 .service-item .item-icon img{
-    width: 100px;
+    width: 100%;
     border-radius: 50%;
 }
 
@@ -456,7 +454,7 @@ hr.small.dark {
 /* Footer */
 
 footer {
-    height: 100%;
+    height: auto;
     width: 100%;
     position: relative;
     color: white;
@@ -469,7 +467,8 @@ footer .foot-container{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 970px;
+    width: 100%;
+    margin: 20% 0% 10% 0%;
 }
 
 footer hr {
