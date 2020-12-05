@@ -88,7 +88,8 @@ hr.small.dark {
 }
 
 .subTitle{
-	margin-left: 570px;
+	margin-right: 10%;
+    text-align: right;
 }
 /* Side Menu */
 
@@ -221,7 +222,7 @@ hr.small.dark {
     background-color: #eee;
 }
 .about .container {
-    width: 900px;
+    width: 70%;
 }
 .about h2 { margin-bottom: 40px; }
 
@@ -256,16 +257,22 @@ hr.small.dark {
 .services iframe { vertical-align: middle; }
 
 .service-item {
+    display: flex;
     margin-bottom: 30px;
 }
 .service-item .item-icon {
+    width: 25%;
     padding: 25px 0 0 0;
+    text-align: center;
 }
 .service-item .item-icon img{
     width: 100px;
     border-radius: 50%;
 }
 
+.service-item .item-content{
+    width: 75%;
+}
 
 /* vue project area */
 .vue-project {
