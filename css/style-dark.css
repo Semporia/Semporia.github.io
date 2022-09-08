@@ -1549,7 +1549,7 @@ html.is-animating .trm-swup-animation {
   justify-content: flex-start;
   padding: 40px;
   width: 100%;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 100%);
   border-radius: 10px;
   box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.6);
   background-color: #00283A
