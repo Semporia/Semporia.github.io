@@ -530,6 +530,9 @@ body {
     pointer-events: all;
     transform: translateY(0)
   }
+  .trm-hidden-switcher{
+    display: none;
+  }
 }
 
 .trm-menu {
