@@ -501,7 +501,7 @@ body {
   justify-content: flex-end
 }
 
-@media(max-width:1200px) {
+@media(max-width:1000px) {
   .trm-top-bar {
     border-radius: 0
   }
