@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>数学加减法生成</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+h4 {
+  text-align: center;
+  font-size: 33px;
+}
+
+.w {
+  width: 28%;
+  display: inline-block;
+  margin: 2%;
+}
+
+.w li {
+  list-style: none;
+  font-size: 33px;
+  line-height: 2;
+  font-weight: 600;
+  letter-spacing: 5px;
+  padding-left: 18px;
+  border-bottom: 1px dashed #e3e3e3;
+}
+</style>
+</head>
+
+<body style="padding: 8px;">
+  <div class="container" style="width:  760px !important;">
+    <h2 style="text-align: center;">数学加减法生成</h2>
+    <form class="form-inline" style="padding: 8px;">
+      <div class="form-group">
+        生成 <input type="number" id="zong" value="" /> 以内
+      </div>
+      <div class="form-group">
+        <div class="checkbox">
+          <div class="radio">
+            <label>
+              <input type="radio" name="optionsRadios" value="1" checked> 加
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="optionsRadios" value="2"> 减
+            </label>
+          </div>
+        </div>
+      </div>
+      <button onclick=shengcheng() type="button" class="btn btn-primary btn-sm" style="margin: 0 15px;">生成</button>
+      <button onclick=preview(1) type="button" class="btn btn-default btn-sm">打印</button>
+    </form>
+    <div class="alert alert-success">这个版本直接输入需要生成的范围（尽量1000以内，不然会变形），点击生成之后。在点击打印就可以了，建议使用谷歌内核的浏览器（360，QQ等），火狐和ie变形不想写兼容了！</div>
+    <!--startprint1-->
+    <!--打印内容开始-->
+    <div id='wdf' style="width:756px;height:1086px;">
+      <h4 onclick=shengcheng()>点击生成内容</h4>
+    </div>
+    <!--打印内容结束-->
+    <!--endprint1-->
+  </div>
+  <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+  <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+  <script language="javascript">
+  function preview(fang) {
+    if ($('#wdf').text().trim() == '点击生成内容') {
+      alert('请生成之后在打印')
+      return false
+    }
+    var isFirefox = navigator.userAgent.indexOf('Firefox') > -1 // 是否是火狐  ，火狐内核Gecko
+    var isTrident = navigator.userAgent.indexOf('Trident') > -1 // 是否是IE内核 
+    if (isFirefox || isTrident) {
+      alert('建议使用360浏览器或者谷歌浏览器打印！')
+      return false
+    }
+    if (fang < 10) {
+      bdhtml = window.document.body.innerHTML; //获取当前页的html代码
+      sprnstr = "<!--startprint" + fang + "-->"; //设置打印开始区域
+      eprnstr = "<!--endprint" + fang + "-->"; //设置打印结束区域
+      prnhtml = bdhtml.substring(bdhtml.indexOf(sprnstr) + 18); //从开始代码向后取html
+      prnhtml = prnhtml.substring(0, prnhtml.indexOf(eprnstr)); //从结束代码向前取html
+      window.document.body.innerHTML = prnhtml;
+      window.print();
+      window.document.body.innerHTML = bdhtml;
+    } else {
+      window.print();
+    }
+  }
+
+  function shengcheng() {
+    let zong = $('#zong').val()
+    if (!zong) {
+      alert('请填写生成的范围！')
+      return false
+    }
+    let fu = $('input:radio:checked').val();
+    let pin1 = '';
+    if (fu == 1) {
+      pin1 = '<h4>' + zong + '以内加法运算</h4>';
+    } else {
+      pin1 = '<h4>' + zong + '以内减法运算</h4>';
+    }
+    for (let a = 0; a < 3; a++) {
+      let pin2 = ''
+      for (let i = 0; i < 15; i++) {
+        let sui = random(1, zong);
+        if (fu == 1) {
+          pin2 += '<li>' + sui + '+' + (random(0, zong - sui)) + '=</li>';
+        } else {
+          pin2 += '<li>' + sui + '-' + (random(1, sui)) + '=</li>';
+        }
+      }
+      pin1 += '<div class="w">' + pin2 + '</div>'
+    }
+    $('#wdf').html(pin1)
+  }
+
+  function random(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+  </script>
+</body>
+
+</html>
